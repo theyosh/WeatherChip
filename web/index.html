@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title>CHIP Weather sensor {UUID}</title>
+    <link rel="stylesheet" href="/css/sky.css" />
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/justgage-1.2.9/raphael-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/js/justgage-1.2.9/justgage.js"></script>
+    <style>
+      .dashboard {
+        top: 0px;
+        text-align: center;
+        width: 100%;
+        z-index: 4;
+        position: absolute;
+      }
+      .gauges {
+        margin: 10px auto
+      }
+      .gauge {
+        height: 200px;
+        width: 250px;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sky">
+      <div class="moon"></div>
+
+      <div class="clouds_two"></div>
+      <div class="clouds_one"></div>
+      <div class="clouds_three"></div>
+
+      <div id="wrapper" class="dashboard">
+        <!-- <img src="Radar2.gif" class="scanning" /> -->
+        <h1>CHIP Weather sensors {UUID}</h1>
+        <table class="gauges">
+          <tr>
+            <td><div id="temperature_gauge" class="gauge" ></div></td>
+            <td><div id="humidity_gauge" class="gauge" ></div></td>
+          </tr>
+        </table>
+        <div id="history">
+          <img src="daily.png" />
+        </div>
+      </div>
+    </div>
+    <script>
+    var temperature, humidity;
+
+    function update() {
+        $("#history img").attr("src", "daily.png?t=" + new Date().getTime());
+        $.getJSON('/api/temperature', function( data ) {
+            temperature.refresh(data.value);
+        });
+        $.getJSON('/api/humidity', function( data ) {
+            humidity.refresh(data.value);
+        });
+        $.getJSON('/api/info', function( data ) {
+            $('.scanning').toggle(data.scanning);
+        });
+    }
+
+    $(function() {
+        $.getJSON('/api/info', function( data ) {
+            document.title = document.title.replace('{UUID}',data.name || data.uuid);
+            $('#wrapper h1').text(document.title);
+        });
+
+        temperature = new JustGage({
+            id: "temperature_gauge",
+            value: 20,
+            min: 0,
+            max: 40,
+            donut: true,
+            decimals: 1,
+            symbol: 'C',
+            label: 'Temperature'
+          });
+
+        humidity = new JustGage({
+            id: "humidity_gauge",
+            value: 60,
+            min: 0,
+            max: 100,
+            donut: true,
+            decimals: 1,
+            symbol: '%',
+            label: 'Humidity'
+          });
+
+        update();
+        setInterval(function(){
+            update();
+        },30000);
+    });
+    </script>
+  </body>
+</html>

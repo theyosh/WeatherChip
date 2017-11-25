@@ -1,0 +1,226 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  background-color: #000;
+  background-image: url('/images/starry-sky.gif');
+}
+
+.sky {
+  height: 100%;
+  background: #007fd5;
+  position: relative;
+  overflow: hidden;
+  -webkit-animation: sky_background 60s infinite;
+  -moz-animation: sky_background 60s infinite;
+  -o-animation: sky_background 60s infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0)
+}
+
+.moon {
+  background: url("/images/moon.png") no-repeat 0px 40%;
+  background-size:10%;
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+
+  -webkit-animation: moon 60s linear infinite;
+  -moz-animation: moon 60s linear infinite;
+  -o-animation: moon 60s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0)
+
+}
+
+.clouds_one {
+  background: url("/images/cloud1.png") 0px 0px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+
+
+  -webkit-animation: cloud_one 80s linear infinite;
+  -moz-animation: cloud_one 80s linear infinite;
+  -o-animation: cloud_one 80s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0)
+}
+
+.clouds_two {
+  background: url("/images/cloud2.png") 0px 0px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+
+  -webkit-animation: cloud_two 40s linear infinite;
+  -moz-animation: cloud_two 40s linear infinite;
+  -o-animation: cloud_two 40s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0)
+}
+
+.clouds_three {
+  background: url("/images/cloud3.png") 0px 0px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+
+  -webkit-animation: cloud_three 30s linear infinite;
+  -moz-animation: cloud_three 30s linear infinite;
+  -o-animation: cloud_three 30s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0)
+}
+
+@-webkit-keyframes sky_background {
+  0% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  20% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  50% {
+    background: none;
+    color: #a3d9ff
+  }
+  80% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  100% {
+    background: #007fd5;
+    color: #007fd5
+  }
+}
+
+@-moz-keyframes sky_background {
+  0% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  20% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  50% {
+    background: none;
+    color: #a3d9ff
+  }
+  80% {
+    background: #007fd5;
+    color: #007fd5
+  }
+  100% {
+    background: #007fd5;
+    color: #007fd5
+  }
+}
+
+@-webkit-keyframes moon {
+  0% {
+    opacity: 0;
+    background-position: -10% 40%;
+    background-size: 5%;
+  }
+  25% {
+    opacity: 0;
+    background-position: -10% 40%;
+    background-size: 5%;
+  }
+  50% {
+    opacity: 1;
+    background-position: 50% -10%;
+    background-size: 20%;
+  }
+  75% {
+    opacity: 0;
+    background-position: 110% 40%;
+    background-size: 5%;
+  }
+  100% {
+    opacity: 0;
+    background-position: 110% 40%;
+    background-size: 5%;
+  }
+}
+@-moz-keyframes moon {
+  0% {
+    opacity: 0;
+    background-position: -10% 40%;
+    background-size: 5%;
+  }
+  25% {
+    opacity: 0;
+    background-position: -10% 40%;
+    background-size: 5%;
+  }
+  50% {
+    opacity: 1;
+    background-position: 50% -10%;
+    background-size: 20%;
+  }
+  75% {
+    opacity: 0;
+    background-position: 110% 40%;
+    background-size: 5%;
+  }
+  100% {
+    opacity: 0;
+    background-position: 110% 40%;
+    background-size: 5%;
+  }
+}
+
+@-webkit-keyframes cloud_one {
+  100% {
+    background-position: -300% 0px;
+  }
+}
+
+@-moz-keyframes cloud_one {
+  100% {
+    background-position: -300% 0px;
+  }
+}
+
+@-webkit-keyframes cloud_two {
+  100% {
+    background-position: -215% 0px;
+  }
+}
+
+@-moz-keyframes cloud_two {
+  100% {
+    background-position: -215% 0px;
+  }
+}
+
+@-webkit-keyframes cloud_three {
+  100% {
+    background-position: -192% 0px;
+  }
+}
+
+@-moz-keyframes cloud_three {
+  100% {
+    background-position: -192% 0px;
+  }
+}
